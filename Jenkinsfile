@@ -19,9 +19,9 @@ pipeline {
         stage('Setup Newman') {
             steps {
                 script {
-                    def newmanInstalled = sh(script: 'command -v newman', returnStatus: true) == 0
+                    def newmanInstalled = bat(script: 'command -v newman', returnStatus: true) == 0
                     if (!newmanInstalled) {
-                    sh 'npm install -g newman'
+                    bat 'npm install -g newman'
                     } else {
                     echo "Newman ya está instalado, saltando instalación"
                     }
@@ -35,9 +35,9 @@ pipeline {
                     def baseCommand = "newman run JSONPlaceholder.postman_collection.json -e environment-de-jsonplaceholder.json -r htmlextra --reporter-htmlextra-export newman-report.html"
                     
                     if (params.TEST_SUITE == 'All') {
-                        sh baseCommand
+                        bat baseCommand
                     } else {
-                        sh baseCommand + " --folder '${params.TEST_SUITE}'"
+                        bat baseCommand + " --folder '${params.TEST_SUITE}'"
                     }
                 }
             }
