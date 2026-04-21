@@ -19,7 +19,7 @@ pipeline {
         stage('Setup Newman') {
             steps {
                 script {
-                    def newmanInstalled = bat(script: 'command -v newman', returnStatus: true) == 0
+                    def newmanInstalled = bat(script: 'npm -v newman', returnStatus: true) == 0
                     if (!newmanInstalled) {
                     bat 'npm install -g newman'
                     } else {
