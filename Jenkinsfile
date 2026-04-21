@@ -46,6 +46,9 @@ pipeline {
         stage('Publish Report') {
             steps {
                 publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: false,
                     reportDir: '.',
                     reportFiles: "newman-report-${params.TEST_SUITE}.html",
                     reportName: "Postman API Test Report de ${params.TEST_SUITE}"
