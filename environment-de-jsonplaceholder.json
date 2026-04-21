@@ -1,0 +1,16 @@
+{
+	"id": "4725edec-80e0-467e-a7ee-b433383e276e",
+	"name": "Base_url",
+	"values": [
+		{
+			"key": "Base_url",
+			"value": "https://jsonplaceholder.typicode.com",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-04-20T19:57:25.317Z",
+	"_postman_exported_using": "Postman/12.7.0"
+}
