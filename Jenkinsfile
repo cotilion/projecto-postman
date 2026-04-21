@@ -32,7 +32,7 @@ pipeline {
         stage('Run Postman Tests') {
             steps {
                 script {
-                    def baseCommand = "newman run JSONPlaceholder.postman_collection.json -e environment-de-jsonplaceholder.json -r htmlextra --reporter-htmlextra-export newman-report.html"
+                    def baseCommand = "newman run JSONPlaceholder.postman_collection.json -e environment-de-jsonplaceholder.json -r htmlextra --reporter-htmlextra-export newman-report${params.TEST_SUITE}.html"
                     
                     if (params.TEST_SUITE == 'All') {
                         bat baseCommand
@@ -43,19 +43,7 @@ pipeline {
             }
         }
         
-        stage('Publish Report') {
-            steps {
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: false,
-                    reportDir: '.',
-                    reportFiles: "newman-report-${params.TEST_SUITE}.html",
-                    reportName: "Postman API Test Report de ${params.TEST_SUITE}"
-                ])
-            }
-        }
-    }
+
     
     post {
         always {
