@@ -37,7 +37,7 @@ pipeline {
                     if (params.TEST_SUITE == 'All') {
                         bat baseCommand
                     } else {
-                        bat baseCommand + " --folder '${params.TEST_SUITE}'"
+                         bat "${baseCommand} --folder \"${params.TEST_SUITE}\""
                     }
                 }
             }
